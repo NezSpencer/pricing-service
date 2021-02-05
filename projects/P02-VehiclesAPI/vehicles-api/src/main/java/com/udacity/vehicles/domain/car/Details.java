@@ -1,8 +1,8 @@
 package com.udacity.vehicles.domain.car;
 
 import com.udacity.vehicles.domain.manufacturer.Manufacturer;
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +20,8 @@ public class Details {
     private String model;
 
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MANUFACTURER_CODE")
     private Manufacturer manufacturer;
 
     private Integer numberOfDoors;
